@@ -1,4 +1,6 @@
-import { Scrollable } from "../Scrollable/Scrollable";
+import { useContext } from "react";
+import { ThemeContext } from "../App/App";
+import cx from "classnames";
 import styles from "./weecly-weather.module.scss";
 import { getHour, getDayWeatherForecast } from "../../utils";
 
@@ -7,6 +9,8 @@ export const WeeclyWeather = ({
   currentWeather,
   temperatureUnit,
 }) => {
+  const theme = useContext(ThemeContext);
+
   return (
     <section className={styles.forecastWeeklyWrapper}>
       <div className={styles.forecastButtonWrapper}>
@@ -14,36 +18,56 @@ export const WeeclyWeather = ({
         <button className={styles.buttonWeekly} type="button"></button>
       </div>
       <div className={styles.forecastWeekContainer}>
-        <Scrollable _class={styles.forecastForHour}>
-          {getDayWeatherForecast(forecastHour, currentWeather.localTime).map(
-            (hour, index) => {
-              return (
-                <li className={styles.item} key={index}>
-                  <img
-                    className={styles.forecastHourIcon}
-                    src={hour.condition.icon}
-                    alt={hour.condition.text}
-                  ></img>
-                  <p className={styles.forecastTime}>{getHour(hour.time)}</p>
+        {getDayWeatherForecast(forecastHour, currentWeather.localTime).map(
+          (hour, index) => {
+            return (
+              <li
+                className={cx(styles.forecastForHour, {
+                  [styles.darkTheme]: theme.dark,
+                })}
+                key={index}
+              >
+                <img
+                  className={styles.forecastHourIcon}
+                  src={hour.condition.icon}
+                  alt={hour.condition.text}
+                ></img>
+                <p className={styles.forecastTime}>{getHour(hour.time)}</p>
 
-                  <span className={styles.hourTemp}>
-                    {!temperatureUnit ? hour.temp_c : hour.temp_f}
+                <span
+                  className={cx(styles.hourTemp, {
+                    [styles.hourTempDark]: theme.dark,
+                  })}
+                >
+                  {!temperatureUnit ? `${hour.temp_c}º` : `${hour.temp_f}º`}
+                </span>
+                <div>
+                  <span
+                    className={cx(styles.forecastWindSpeed, {
+                      [styles.darkText]: theme.dark,
+                    })}
+                  >
+                    {`Wind speed ${hour.wind_kph}km/h`}
                   </span>
-                  {!temperatureUnit ? <sub> ºC </sub> : <sub> ºF </sub>}
-                  <div>
-                    <span className={styles.forecastWindSpeed}>
-                      {`Wind speed ${hour.wind_kph}km/h`}
-                    </span>
-                    <span className={styles.forecastChanceRain}>
-                      {`Chance of rain: ${hour.chance_of_rain}%`}
-                    </span>
-                  </div>
-                  <p className={styles.forecastText}>{hour.condition.text}</p>
-                </li>
-              );
-            }
-          )}
-        </Scrollable>
+                  <span
+                    className={cx(styles.forecastChanceRain, {
+                      [styles.darkText]: theme.dark,
+                    })}
+                  >
+                    {`Chance of rain: ${hour.chance_of_rain}%`}
+                  </span>
+                </div>
+                <p
+                  className={cx(styles.forecastText, {
+                    [styles.darkText]: theme.dark,
+                  })}
+                >
+                  {hour.condition.text}
+                </p>
+              </li>
+            );
+          }
+        )}
       </div>
     </section>
   );

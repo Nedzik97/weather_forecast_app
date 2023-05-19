@@ -13,12 +13,28 @@
 
 .darkTheme {
 	background-color: #000;
+	color: #ffffff;
+	transition: 0.3s ease;
 }
 
 .containerChoiceLocation h1 {
-	font-size: 30px;
+	font-size: 40px;
 	font-weight: 600;
 	text-transform: uppercase;
+	letter-spacing: 1px;
+	background: linear-gradient(to right, #007bff, #8a2be2, #ff0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+	animation: neonGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonGlow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #007bff, 0 0 40px #007bff, 0 0 50px #007bff, 0 0 60px #007bff, 0 0 70px #007bff;
+  }
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 50px #ff0000, 0 0 60px #ff0000, 0 0 70px #ff0000;
+  }
 }
 
 .buttonContainer {
@@ -63,6 +79,10 @@
 	line-height: 19px;
 	color: #ffffff;
 	background: linear-gradient(90deg, #48057d,#e972b0,#68047c,#723ac2)
+}
+
+.darkButton {
+	background: linear-gradient(to bottom, #444444, #888888);;
 }
 
 .locationForm {

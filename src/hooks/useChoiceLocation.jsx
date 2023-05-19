@@ -4,7 +4,10 @@ export const SetChoiceLocation = () => {
   const [isClick, setIsClick] = useState(false);
   const [location, setLocation] = useState("London");
   const [temperatureUnit, setTemperatureUnit] = useState(false);
-  const [pageTheme, setPageTheme] = useState(false);
+  const [theme, setTheme] = useState({
+    white: true,
+    dark: false,
+  });
 
   return {
     isClick,
@@ -13,7 +16,7 @@ export const SetChoiceLocation = () => {
     setLocation,
     temperatureUnit,
     setTemperatureUnit,
-    pageTheme,
-    setPageTheme,
+    theme,
+    setTheme,
   };
 };

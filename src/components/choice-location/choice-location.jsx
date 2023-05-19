@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { ThemeContext } from "../App/App";
 import logo from "../../img/logo.jpg";
 import cx from "classnames";
 import styles from "./choice-location.module.scss";
@@ -6,8 +7,7 @@ import styles from "./choice-location.module.scss";
 export const ChoiceLocation = ({
   setTemperatureUnit,
   temperatureUnit,
-  setPageTheme,
-  pageTheme,
+  setTheme,
   isClick,
   location,
   setLocation,
@@ -15,12 +15,20 @@ export const ChoiceLocation = ({
   getForecastWeather,
   currentWeather,
 }) => {
+  const theme = useContext(ThemeContext);
   const handleButtonLocation = () => {
     setIsClick(true);
   };
 
   const handleInputLocation = (e) => {
     setLocation(e.target.value);
+  };
+
+  const handleThemeChange = () => {
+    setTheme({
+      white: !theme.white,
+      dark: !theme.dark,
+    });
   };
 
   useEffect(() => {
@@ -42,13 +50,19 @@ export const ChoiceLocation = ({
   return (
     <div
       className={cx(styles.containerChoiceLocation, {
-        [styles.darkTheme]: pageTheme,
+        [styles.darkTheme]: theme.dark,
       })}
     >
       <a href="/">
         <img src={logo} alt="logo" width="100" height="100"></img>
       </a>
-      <h1>Weather forecast</h1>
+      <h1
+        className={cx({
+          [styles.darkTheme]: theme.dark,
+        })}
+      >
+        Weather forecast
+      </h1>
       <div className={styles.buttonContainer}>
         <div className={styles.switchContainer}>
           <button
@@ -73,11 +87,11 @@ export const ChoiceLocation = ({
             )}
           </button>
           <button
-            onClick={() => setPageTheme((prev) => !prev)}
+            onClick={() => handleThemeChange()}
             className={styles.themeSwitch}
             type="burron"
           >
-            {!pageTheme ? (
+            {theme.white ? (
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <g data-name="Layer 2">
                   <path
@@ -105,7 +119,9 @@ export const ChoiceLocation = ({
         {!isClick ? (
           <button
             onClick={() => handleButtonLocation()}
-            className={styles.buttonChoiceLocation}
+            className={cx(styles.buttonChoiceLocation, {
+              [styles.darkButton]: theme.dark,
+            })}
             type="button"
           >
             <svg

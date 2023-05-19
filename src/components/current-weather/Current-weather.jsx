@@ -1,5 +1,5 @@
-import styles from "./Current-weather.module.scss";
 import { getDate, getTime } from "../../utils";
+import styles from "./Current-weather.module.scss";
 
 export const CurrentWeather = ({ currentWeather, temperatureUnit }) => {
   if (!currentWeather) {
