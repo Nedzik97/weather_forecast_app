@@ -1,0 +1,83 @@
+.forecastWeekContainer {
+	border-radius: 20px;
+	max-width: 1800px;
+}
+
+.forecastForHour {
+	display: flex;
+	min-width: 340px;
+	overflow-x: scroll;
+}
+
+.forecastForHour::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.item {
+	&:hover {
+		background: linear-gradient(317.63deg,#353589 -7.42%,#9a9aff 120.45%);
+		color: #ffffff;
+		transition: .3ms;
+	}
+	&:hover .hourTemp {
+		color: #ffffff;
+		transition: .3ms;
+	}
+	display: flex;
+	min-width: 340px;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	list-style-type: none;
+	gap: 15px;
+	padding: 20px;
+	border-radius: 30px;
+	background-color: #f7f8fa;;
+}
+
+.forecastHourIcon {
+	height: 100%;
+	width: 200px
+}
+
+.forecastTime {
+	text-transform: uppercase;
+	padding: 10px 25px;
+	border-radius: 20px;
+	background-color: #7668e5;
+	color: #ffffff;
+	font-size: 20px;
+}
+
+.hourTemp {
+	font-size: 57px;
+  line-height: 74px;
+	color: #353589;;
+}
+
+sub {
+	top: -5rem;
+	left: 5rem;
+	font-size: 28px;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+.forecastWindSpeed {
+	display: block;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.forecastChanceRain {
+	display: block;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.forecastText {
+	font-size: 25px;
+	font-weight: 600;
+}

@@ -1,0 +1,121 @@
+.currentWeatherWrapper {
+	display: flex;
+	justify-content: space-between;
+	box-sizing: border-box;
+	margin-top: 160px;
+	padding: 120px 25px;
+	border-radius: 20px;
+	background-image: url("../../img/bg-current-weather.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	color: #ffffff
+}
+
+.dateWindWrapper {
+	border-radius: 20px;
+	padding: 40px;
+}
+
+.locationWrapper {
+	margin-bottom: 40px;
+}
+
+.windIndicators {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	background-color: #ffffff;
+	border-radius: 20px;
+	padding: 30px;
+	font-size: 30px;
+	color: #6A5ACD;
+}
+
+.windIndicators div {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	align-self: flex-start;
+	gap: 25px;
+}
+
+.windIcon {
+	width: 40px;
+	height: 40px;
+	border-radius: 5px;
+	background-color: #6A5ACD;
+}
+
+.cityNames {
+	font-size: 75px;
+	font-weight: 700;
+	line-height: 49px;
+	margin-bottom: 25px;
+}
+
+.regionNames {
+	font-size: 30px;
+	margin-bottom: 45px;
+}
+
+.localTime {
+	font-size: 18px;
+}
+
+.lastUpdateTime {
+	font-size: 18px;
+	margin-left: 50px;
+}
+
+.tempWrapper {
+	width: 370px;
+	background-color: #6A5ACD;
+	border-radius: 20px;
+	padding: 30px;
+}
+
+.currentDay {
+	color: #ffffff;
+	padding: 6px 20px;
+	background-color: #00008B;
+	border-radius: 20px;
+}
+
+.icon {
+	display: block;
+	width: 180px;
+	max-width: 100%;
+	height: auto;
+	margin: auto;
+	margin-top: 15px;
+}
+
+.temp {
+	font-size: 90px;
+  line-height: 99px;
+	color: #ffffff;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.temp sub {
+	top: -2rem;
+	font-size: 50%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+.text {
+	display: block;
+	font-size: 20px;
+  line-height: 31px;
+	margin-bottom: 10px;
+}
+
+.cloud {
+	display: block;
+	font-size: 20px;
+  line-height: 31px;
+}

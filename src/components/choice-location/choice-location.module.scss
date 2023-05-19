@@ -1,0 +1,129 @@
+.containerChoiceLocation {
+	background-color: white;  
+	position: fixed;  
+	top: 0;
+	left: 0;
+	z-index: 1;  
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 60px;
+}
+
+.darkTheme {
+	background-color: #000;
+}
+
+.containerChoiceLocation h1 {
+	font-size: 30px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.buttonContainer {
+	display: flex;
+}
+
+.switchContainer {
+	display: flex;
+	gap: 14px;
+	margin-right: 2rem;
+}
+
+.degreeSwitch {
+	width: 35px;
+	height: 35px;
+	background: linear-gradient(90deg, #48057d,#e972b0,#68047c,#723ac2);
+	border-radius: 50%;
+	align-self: center;
+}
+
+.themeSwitch {
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	align-self: center;
+	background-color: transparent;
+}
+
+.buttonChoiceLocation {
+	padding: 15px 30px;
+	font-size: 18px;
+	line-height: 23px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: 500;
+	text-transform: capitalize;
+	letter-spacing: 0;
+	line-height: 19px;
+	color: #ffffff;
+	background: linear-gradient(90deg, #48057d,#e972b0,#68047c,#723ac2)
+}
+
+.locationForm {
+	position: relative;
+}
+
+.locationField {
+	&:focus {
+		outline: none;
+	}
+	width: 147px;
+	font-size: 20px;
+  padding: 10px;
+  display: block;
+  border-bottom: 1px solid #000;
+}
+
+.locationLabel {
+  color: #000;
+  font-size: 18px;
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  top: 15px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 50px;
+}
+
+.bar:before, .bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  position: absolute;
+  background: #5264AE;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.bar:before {
+  left: 50%;
+}
+.bar:after {
+  right: 50%;
+}
+
+.locationField:focus ~ .bar:before,
+.locationField:focus ~ .bar:after {
+  width: 147px;
+}
+
+.locationField:focus ~ .locationLabel, .locationField:valid ~ .locationLabel{
+  top: -15px;
+	left: 70%;
+  font-size: 14px;
+  color: #5264AE;
+}
