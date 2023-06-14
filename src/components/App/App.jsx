@@ -41,6 +41,7 @@ function App() {
             currentWeather={currentWeather}
             temperatureUnit={temperatureUnit}
           />
+
           <WeeklyWeatherForecast
             weatherForecastData={weatherForecastData}
             currentWeather={currentWeather}

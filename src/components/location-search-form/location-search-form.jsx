@@ -9,7 +9,6 @@ export const LocationSearchForm = ({
     e.preventDefault();
     const formData = new FormData(e.target);
     const inputValue = formData.get("location");
-    console.log(inputValue);
     if (inputValue) {
       getCurrentWeather(inputValue);
       getForecastData(inputValue);
@@ -28,7 +27,6 @@ export const LocationSearchForm = ({
         type="text"
         name="location"
         autoComplete="off"
-        defaultValue="London"
       ></input>
       <span className={styles.bar}></span>
       <label className={styles.locationLabel}>Сity</label>
