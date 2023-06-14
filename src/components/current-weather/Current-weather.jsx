@@ -5,6 +5,7 @@ export const CurrentWeather = ({ currentWeather, temperatureUnit }) => {
   if (!currentWeather) {
     return null;
   }
+
   return (
     <section className={styles.currentWeatherWrapper}>
       <div className={styles.dateWindWrapper}>
@@ -62,8 +63,10 @@ export const CurrentWeather = ({ currentWeather, temperatureUnit }) => {
           alt="icon weather"
         ></img>
         <p className={styles.temp}>
-          {!temperatureUnit ? currentWeather.tempC : currentWeather.tempF}
-          {!temperatureUnit ? <sub>ºC</sub> : <sub>ºF</sub>}
+          {temperatureUnit.celsius
+            ? currentWeather.tempC
+            : currentWeather.tempF}
+          {temperatureUnit.celsius ? <sub>ºC</sub> : <sub>ºF</sub>}
         </p>
         <span className={styles.text}>{currentWeather.text}</span>
         <span className={styles.cloud}>{`Cloud ${currentWeather.cloud}%`}</span>

@@ -1,60 +1,54 @@
-import React from "react";
+import { useEffect } from "react";
+import { createContext } from "react";
+import { Header } from "../header/header";
 import { CurrentWeather } from "../current-weather/Current-weather";
-import { ChoiceLocation } from "../choice-location/choice-location";
-import { WeeclyWeather } from "../weecly-weather/weecly-weather";
-import { SetChoiceLocation } from "../../hooks/useChoiceLocation.jsx";
-import { SetWeatherData } from "../../hooks/useWeatherData";
+import { WeeklyWeatherForecast } from "../weekly-weather-forecast/weekly-weather-forecast";
+import { UsePageTheme } from "../../hooks/usePageTheme";
+import { UseTemperatureUnit } from "../../hooks/useTemperatureUnit";
+import { UseCurrentWeatherData } from "../../hooks/useCurrentWeatherData";
+import { UseForecastData } from "../../hooks/useForecastData";
 import cx from "classnames";
 import styles from "./App.module.scss";
-
-export const ThemeContext = React.createContext();
+export const ThemeContext = createContext();
 
 function App() {
-  const {
-    isClick,
-    setIsClick,
-    location,
-    setLocation,
-    temperatureUnit,
-    setTemperatureUnit,
-    theme,
-    setTheme,
-  } = SetChoiceLocation();
-  const { getWeatherData, currentWeather, getForecastWeather, forecastHour } =
-    SetWeatherData();
+  const { pageTheme, changePageTheme } = UsePageTheme();
+  const { temperatureUnit, changeTemperatureUnit } = UseTemperatureUnit();
+  const { currentWeather, getCurrentWeather } = UseCurrentWeatherData();
+  const { weatherForecastData, getForecastData } = UseForecastData();
+
+  useEffect(() => {
+    getCurrentWeather("London");
+    getForecastData("London");
+  }, []);
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <div
-        className={cx(styles.appWrapper, {
-          [styles.darkTheme]: theme.dark,
-        })}
-      >
-        <div className={styles.App}>
-          <ChoiceLocation
-            isClick={isClick}
-            setIsClick={setIsClick}
-            location={location}
+    <div
+      className={cx(styles.appWrapper, {
+        [styles.darkTheme]: pageTheme.dark,
+      })}
+    >
+      <div className={styles.App}>
+        <ThemeContext.Provider value={pageTheme}>
+          <Header
+            getCurrentWeather={getCurrentWeather}
+            getForecastData={getForecastData}
+            changePageTheme={changePageTheme}
+            changeTemperatureUnit={changeTemperatureUnit}
             temperatureUnit={temperatureUnit}
-            setTemperatureUnit={setTemperatureUnit}
-            setTheme={setTheme}
-            setLocation={setLocation}
-            getWeatherData={getWeatherData}
-            getForecastWeather={getForecastWeather}
-            currentWeather={currentWeather}
           />
           <CurrentWeather
             currentWeather={currentWeather}
             temperatureUnit={temperatureUnit}
           />
-          <WeeclyWeather
-            forecastHour={forecastHour}
+          <WeeklyWeatherForecast
+            weatherForecastData={weatherForecastData}
             currentWeather={currentWeather}
             temperatureUnit={temperatureUnit}
           />
-        </div>
+        </ThemeContext.Provider>
       </div>
-    </ThemeContext.Provider>
+    </div>
   );
 }
 
