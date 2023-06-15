@@ -1,0 +1,57 @@
+.forecastWeeklyItems {
+	&:hover {
+		background: linear-gradient(317.63deg,#353589 -7.42%,#9a9aff 120.45%);
+		transition-duration: .5s;
+	}
+	&:hover span {
+		color: #ffffff;
+		transition-duration: .5s;
+	}
+	&:hover h2 {
+		color: #ffffff;
+		transition-duration: .5s;
+	}
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+	align-items: center;
+	padding: 30px 0;
+	width: 300px;
+	font-size: 18px;
+  line-height: 30px;
+	font-weight: 600;
+	background-color: #f7f8fa;
+	border-radius: 9999px
+}
+
+.weeklyItemsDark {
+	background: #222;
+}
+
+img {
+	height: 100%;
+	width: 200px
+}
+
+.forecastWeeklyItems h2 {
+	color: #666;
+	font-size: 26px;
+	text-align: center;
+}
+
+.forecastWeeklyItems .dateTextDark {
+	color: #ffffff;
+}
+
+.forecastWeeklyItems span {
+	font-size: 57px;
+  line-height: 74px;
+  font-weight: 600;
+  color: #353589;
+}
+
+.forecastWeeklyItems .dayTempDark {
+	color: #7668e5;
+}
+
+

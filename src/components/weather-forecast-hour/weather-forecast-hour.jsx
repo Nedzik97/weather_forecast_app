@@ -3,37 +3,18 @@ import { ThemeContext } from "../App/App";
 import { getHour, getDayWeatherForecast } from "../../utils";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { responsiveCarousel } from "../../utils";
 import cx from "classnames";
-import styles from "./weekly-weather-forecast.module.scss";
+import styles from "./weather-forecast-hour.module.scss";
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
-
-const WeatherForecastForHour = ({
+export const WeatherForecastForHour = ({
   weatherForecastData,
   currentWeather,
   temperatureUnit,
 }) => {
   const theme = useContext(ThemeContext);
   return (
-    <Carousel responsive={responsive}>
+    <Carousel responsive={responsiveCarousel}>
       {getDayWeatherForecast(weatherForecastData, currentWeather.localTime).map(
         (hour, index) => {
           return (
@@ -87,30 +68,5 @@ const WeatherForecastForHour = ({
         }
       )}
     </Carousel>
-  );
-};
-
-export const WeeklyWeatherForecast = ({
-  weatherForecastData,
-  currentWeather,
-  temperatureUnit,
-}) => {
-  return (
-    // <section className={styles.forecastWeeklyWrapper}>
-    //   <div className={styles.forecastButtonWrapper}>
-    //     <button className={styles.buttonToday} type="button"></button>
-    //     <button className={styles.buttonWeekly} type="button"></button>
-    //   </div>
-    //   <div className={styles.forecastWeekContainer}>
-
-    // </div>
-    // </section>
-    <div>
-      <WeatherForecastForHour
-        weatherForecastData={weatherForecastData}
-        currentWeather={currentWeather}
-        temperatureUnit={temperatureUnit}
-      />
-    </div>
   );
 };

@@ -2,8 +2,9 @@ import styles from "./location-search-form.module.scss";
 
 export const LocationSearchForm = ({
   getCurrentWeather,
-  getForecastData,
+  getForecastForHour,
   setIsClickLocation,
+  getForecastWeekly,
 }) => {
   const handleLocationForm = (e) => {
     e.preventDefault();
@@ -11,7 +12,8 @@ export const LocationSearchForm = ({
     const inputValue = formData.get("location");
     if (inputValue) {
       getCurrentWeather(inputValue);
-      getForecastData(inputValue);
+      getForecastForHour(inputValue);
+      getForecastWeekly(inputValue);
     }
     setIsClickLocation((prev) => !prev);
   };

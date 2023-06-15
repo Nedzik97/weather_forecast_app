@@ -12,7 +12,8 @@ export const Header = ({
   changePageTheme,
   changeTemperatureUnit,
   temperatureUnit,
-  getForecastData,
+  getForecastForHour,
+  getForecastWeekly,
 }) => {
   const theme = useContext(ThemeContext);
   const { isClickLocation, setIsClickLocation } = UseLocation();
@@ -101,7 +102,8 @@ export const Header = ({
         {isClickLocation ? (
           <LocationSearchForm
             getCurrentWeather={getCurrentWeather}
-            getForecastData={getForecastData}
+            getForecastForHour={getForecastForHour}
+            getForecastWeekly={getForecastWeekly}
             setIsClickLocation={setIsClickLocation}
           />
         ) : (

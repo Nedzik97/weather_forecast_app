@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { fetchForecastWeather } from "../api";
 
-export const UseForecastData = () => {
+export const UseForecastForHour = () => {
   const [weatherForecastData, setWeatherForecastData] = useState([]);
 
-  const getForecastData = (location) => {
+  const getForecastForHour = (location) => {
     fetchForecastWeather(location).then((res) => {
       setWeatherForecastData(
         res.forecast.forecastday[0].hour.concat(
@@ -14,5 +14,5 @@ export const UseForecastData = () => {
     });
   };
 
-  return { weatherForecastData, getForecastData };
+  return { weatherForecastData, getForecastForHour };
 };
