@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../App/App";
+import { ThemeContext } from "../ThemeContext";
 import cx from "classnames";
 import styles from "./location-search-button.module.scss";
 
@@ -9,7 +9,7 @@ export const LocationSearchButton = ({ setIsClickLocation }) => {
     <button
       onClick={() => setIsClickLocation((prev) => !prev)}
       className={cx(styles.buttonChoiceLocation, {
-        [styles.darkButton]: theme.dark,
+        [styles.darkButton]: theme === "dark",
       })}
       type="button"
     >

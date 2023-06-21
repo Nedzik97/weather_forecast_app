@@ -1,40 +1,27 @@
-import { useContext } from "react";
-import { ThemeContext } from "../App/App";
 import cx from "classnames";
 import styles from "./weather-forecast-buttons.module.scss";
 
 export const ForecastSwitchButtons = ({
-  switchTodayAndWeekle,
+  todayAndWeekle,
   setSwitchTodayAndWeekle,
 }) => {
-  const theme = useContext(ThemeContext);
   return (
     <div className={styles.forecastButtonWrapper}>
       <button
         className={cx(styles.buttonToday, {
-          [styles.active]: switchTodayAndWeekle.today,
+          [styles.active]: todayAndWeekle === "today",
         })}
         type="button"
-        onClick={() =>
-          setSwitchTodayAndWeekle({
-            today: true,
-            weekly: false,
-          })
-        }
+        onClick={() => setSwitchTodayAndWeekle("today")}
       >
         Today
       </button>
       <button
         className={cx(styles.buttonWeekly, {
-          [styles.active]: switchTodayAndWeekle.weekly,
+          [styles.active]: todayAndWeekle === "weekly",
         })}
         type="button"
-        onClick={() =>
-          setSwitchTodayAndWeekle({
-            today: false,
-            weekly: true,
-          })
-        }
+        onClick={() => setSwitchTodayAndWeekle("weekly")}
       >
         Weekly
       </button>

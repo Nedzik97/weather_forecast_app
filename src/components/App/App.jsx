@@ -1,71 +1,56 @@
-import { useEffect } from "react";
-import { createContext } from "react";
 import { Header } from "../header/header";
-import { WeatherForecastForHour } from "../weather-forecast-hour/weather-forecast-hour";
 import { CurrentWeather } from "../current-weather/Current-weather";
-import { ForecastSwitchButtons } from "../weather-forecast-buttons/weather-forecast-buttons";
+import { WeatherForecastForHour } from "../weather-forecast-hour/weather-forecast-hour";
 import { WeatherForecastWeekly } from "../weather-forecast-weekly/weather-forecast-weekly";
-import { UsePageTheme } from "../../hooks/usePageTheme";
-import { UseTemperatureUnit } from "../../hooks/useTemperatureUnit";
-import { UseCurrentWeatherData } from "../../hooks/useCurrentWeatherData";
-import { UseForecastForHour } from "../../hooks/useForecastForHour";
-import { UseSwitchButtons } from "../../hooks/useSwitchTodayAndWeekly";
-import { UseForecastForWeekly } from "../../hooks/useForecastForWeekly";
+import { ForecastSwitchButtons } from "../weather-forecast-buttons/weather-forecast-buttons";
+import { useTheme } from "../../hooks/useTheme";
+import { useTemperatureUnit } from "../../hooks/useTemperatureUnit";
+import { useSwitchTodayAnaWeekly } from "../../hooks/useSwitchTodayAndWeekly";
+import { useWeatherForecastData } from "../../hooks/useWeatherForecastData";
+import { ThemeContextProvider } from "../ThemeContext";
 import cx from "classnames";
 import styles from "./App.module.scss";
-export const ThemeContext = createContext();
 
 function App() {
-  const { pageTheme, changePageTheme } = UsePageTheme();
-  const { temperatureUnit, changeTemperatureUnit } = UseTemperatureUnit();
-  const { currentWeather, getCurrentWeather } = UseCurrentWeatherData();
-  const { weatherForecastData, getForecastForHour } = UseForecastForHour();
-  const { switchTodayAndWeekle, setSwitchTodayAndWeekle } = UseSwitchButtons();
-  const { weatherForecastWeekly, getForecastWeekly } = UseForecastForWeekly();
-
-  useEffect(() => {
-    getCurrentWeather("London");
-    getForecastForHour("London");
-    getForecastWeekly("London");
-  }, []);
+  const { theme, toggleTheme } = useTheme();
+  const { temperatureUnit, toggleTemperature } = useTemperatureUnit();
+  const { todayAndWeekle, setSwitchTodayAndWeekle } = useSwitchTodayAnaWeekly();
+  const { weatherData, getWeatherData } = useWeatherForecastData();
 
   return (
     <div
       className={cx(styles.appWrapper, {
-        [styles.darkTheme]: pageTheme.dark,
+        [styles.darkTheme]: theme === "dark",
       })}
     >
       <div className={styles.App}>
-        <ThemeContext.Provider value={pageTheme}>
+        <ThemeContextProvider theme={theme}>
           <Header
-            getCurrentWeather={getCurrentWeather}
-            getForecastForHour={getForecastForHour}
-            getForecastWeekly={getForecastWeekly}
-            changePageTheme={changePageTheme}
-            changeTemperatureUnit={changeTemperatureUnit}
+            getWeatherData={getWeatherData}
+            toggleTheme={toggleTheme}
+            toggleTemperature={toggleTemperature}
             temperatureUnit={temperatureUnit}
           />
           <CurrentWeather
-            currentWeather={currentWeather}
+            weatherData={weatherData}
             temperatureUnit={temperatureUnit}
           />
           <ForecastSwitchButtons
-            switchTodayAndWeekle={switchTodayAndWeekle}
+            todayAndWeekle={todayAndWeekle}
             setSwitchTodayAndWeekle={setSwitchTodayAndWeekle}
           />
-          {switchTodayAndWeekle.today ? (
+          {todayAndWeekle === "today" ? (
             <WeatherForecastForHour
-              weatherForecastData={weatherForecastData}
-              currentWeather={currentWeather}
+              weatherData={weatherData}
               temperatureUnit={temperatureUnit}
             />
           ) : (
             <WeatherForecastWeekly
-              weatherForecastWeekly={weatherForecastWeekly}
+              weatherData={weatherData}
               temperatureUnit={temperatureUnit}
             />
           )}
-        </ThemeContext.Provider>
+        </ThemeContextProvider>
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 import { getDate, getTime } from "../../utils";
 import styles from "./Current-weather.module.scss";
 
-export const CurrentWeather = ({ currentWeather, temperatureUnit }) => {
-  if (!currentWeather) {
+export const CurrentWeather = ({ weatherData, temperatureUnit }) => {
+  if (!weatherData) {
     return null;
   }
 
@@ -10,13 +10,17 @@ export const CurrentWeather = ({ currentWeather, temperatureUnit }) => {
     <section className={styles.currentWeatherWrapper}>
       <div className={styles.dateWindWrapper}>
         <div className={styles.locationWrapper}>
-          <h2 className={styles.cityNames}>{currentWeather.city}</h2>
-          <p className={styles.regionNames}>{currentWeather.region}</p>
+          <h2 className={styles.cityNames}>
+            {weatherData.currentWeather.city}
+          </h2>
+          <p className={styles.regionNames}>
+            {weatherData.currentWeather.region}
+          </p>
           <span className={styles.localTime}>
-            {getDate(currentWeather.localTime)}
+            {getDate(weatherData.currentWeather.localTime)}
           </span>
           <span className={styles.lastUpdateTime}>
-            {`Update As Of ${getTime(currentWeather.lastUpdate)}`}
+            {`Update As Of ${getTime(weatherData.currentWeather.lastUpdate)}`}
           </span>
         </div>
         <div className={styles.windIndicators}>
@@ -32,7 +36,7 @@ export const CurrentWeather = ({ currentWeather, temperatureUnit }) => {
             </div>
             <p
               className={styles.windSpeed}
-            >{`Wind ${currentWeather.windKPH} km/h`}</p>
+            >{`Wind ${weatherData.currentWeather.windKPH} km/h`}</p>
           </div>
           <div>
             <div className={styles.windIcon}>
@@ -51,7 +55,7 @@ export const CurrentWeather = ({ currentWeather, temperatureUnit }) => {
             </div>
             <p
               className={styles.windDir}
-            >{`Wind dir ${currentWeather.windDir}`}</p>
+            >{`Wind dir ${weatherData.currentWeather.windDir}`}</p>
           </div>
         </div>
       </div>
@@ -59,17 +63,19 @@ export const CurrentWeather = ({ currentWeather, temperatureUnit }) => {
         <span className={styles.currentDay}>Today</span>
         <img
           className={styles.icon}
-          src={currentWeather.icon}
+          src={weatherData.currentWeather.icon}
           alt="icon weather"
         ></img>
         <p className={styles.temp}>
-          {temperatureUnit.celsius
-            ? currentWeather.tempC
-            : currentWeather.tempF}
+          {temperatureUnit === "celsius"
+            ? weatherData.currentWeather.tempC
+            : weatherData.currentWeather.tempF}
           {temperatureUnit.celsius ? <sub>ºC</sub> : <sub>ºF</sub>}
         </p>
-        <span className={styles.text}>{currentWeather.text}</span>
-        <span className={styles.cloud}>{`Cloud ${currentWeather.cloud}%`}</span>
+        <span className={styles.text}>{weatherData.currentWeather.text}</span>
+        <span
+          className={styles.cloud}
+        >{`Cloud ${weatherData.currentWeather.cloud}%`}</span>
       </div>
     </section>
   );

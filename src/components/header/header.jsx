@@ -1,31 +1,29 @@
 import { useContext } from "react";
-import { ThemeContext } from "../App/App";
+import { ThemeContext } from "../ThemeContext";
 import { UseLocation } from "../../hooks/useLocation";
 import { LocationSearchForm } from "../location-search-form/location-search-form";
 import { LocationSearchButton } from "../location-search-button/location-search-button";
-import logo from "../../img/logo.jpg";
+import logo from "../../images/logo.jpg";
 import cx from "classnames";
 import styles from "./header.module.scss";
 
 export const Header = ({
-  getCurrentWeather,
-  changePageTheme,
-  changeTemperatureUnit,
+  getWeatherData,
+  toggleTheme,
+  toggleTemperature,
   temperatureUnit,
-  getForecastForHour,
-  getForecastWeekly,
 }) => {
   const theme = useContext(ThemeContext);
   const { isClickLocation, setIsClickLocation } = UseLocation();
 
-  const TemperatureUnit = ({ changeTemperatureUnit }) => {
+  const TemperatureUnit = ({ toggleTemperature }) => {
     return (
       <button
-        onClick={() => changeTemperatureUnit()}
+        onClick={() => toggleTemperature()}
         className={styles.degreeSwitch}
         type="button"
       >
-        {!temperatureUnit.celsius ? (
+        {!temperatureUnit === "celsius" ? (
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
             <path
               fill="#ffffff"
@@ -44,14 +42,14 @@ export const Header = ({
     );
   };
 
-  const PageTheme = ({ changePageTheme }) => {
+  const Theme = ({ toggleTheme }) => {
     return (
       <button
-        onClick={() => changePageTheme()}
+        onClick={() => toggleTheme()}
         className={styles.themeSwitch}
         type="burron"
       >
-        {theme.white ? (
+        {theme === "light" ? (
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <g data-name="Layer 2">
               <path
@@ -81,7 +79,7 @@ export const Header = ({
   return (
     <div
       className={cx(styles.containerChoiceLocation, {
-        [styles.darkTheme]: theme.dark,
+        [styles.darkTheme]: theme === "dark",
       })}
     >
       <a href="/">
@@ -89,21 +87,19 @@ export const Header = ({
       </a>
       <h1
         className={cx({
-          [styles.darkTheme]: theme.dark,
+          [styles.darkTheme]: theme === "dark",
         })}
       >
         Weather forecast
       </h1>
       <div className={styles.buttonContainer}>
         <div className={styles.switchContainer}>
-          <TemperatureUnit changeTemperatureUnit={changeTemperatureUnit} />
-          <PageTheme changePageTheme={changePageTheme} />
+          <TemperatureUnit toggleTemperature={toggleTemperature} />
+          <Theme toggleTheme={toggleTheme} />
         </div>
         {isClickLocation ? (
           <LocationSearchForm
-            getCurrentWeather={getCurrentWeather}
-            getForecastForHour={getForecastForHour}
-            getForecastWeekly={getForecastWeekly}
+            getWeatherData={getWeatherData}
             setIsClickLocation={setIsClickLocation}
           />
         ) : (
