@@ -28,3 +28,21 @@ button {
 	}
 	color: 	#7668e5;
 }
+
+@media (max-width: 320px) {
+	.forecastButtonWrapper {
+		justify-content: space-around;
+	}
+}
+
+@media (max-width: 480px) {
+	.forecastButtonWrapper {
+		justify-content: space-around;
+	}
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+	.forecastButtonWrapper {
+		justify-content: space-around;
+	}
+}

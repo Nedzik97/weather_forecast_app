@@ -59,7 +59,13 @@ export const Header = ({
       })}
     >
       <a href="/">
-        <img src={logo} alt="logo" width="100" height="100"></img>
+        <img
+          className={styles.logo}
+          src={logo}
+          alt="logo"
+          width="100"
+          height="100"
+        ></img>
       </a>
       <h1
         className={cx({

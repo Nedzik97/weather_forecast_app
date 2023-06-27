@@ -10,7 +10,7 @@ import styles from "./weather-forecast-hour.module.scss";
 export const WeatherForecastForHour = ({ weatherData, temperatureUnit }) => {
   const theme = useContext(ThemeContext);
   return (
-    <Carousel responsive={responsiveCarousel}>
+    <Carousel responsive={responsiveCarousel} swipeable={true}>
       {getDayWeatherForecast(
         weatherData.forecastForHour,
         weatherData.currentWeather.localTime

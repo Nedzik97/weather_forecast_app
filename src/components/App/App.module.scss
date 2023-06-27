@@ -82,42 +82,41 @@ h1,h2,h3,h4,h5,h6 {
 	transition: 0.3s ease;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 320px) {
 	body {
-		font-size: 6px;
-	 }
-	 :global { .react-multi-carousel-track { 
-		gap: 1%;
+		font-size: 8px;
+	}
+	.App {
+		padding: 0 1rem;
 	}
 }
+
+@media (max-width: 480px) {
+	body {
+		font-size: 8px;
+	}
+	.App {
+		padding: 0 1rem;
+	}
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
 	body {
-		font-size: 7px;
-	 }
-	 :global { .react-multi-carousel-track { 
-		gap: 1%;
+		font-size: 10px;
 	}
-}
+	.App {
+		padding: 0 1rem;
+	}
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-	body {
-		font-size: 8px;
-	 }
-	 :global { .react-multi-carousel-track { 
-		gap: 1%;
+	.App {
+		padding: 0 1.2rem;
 	}
-}
 }
 
 @media (min-width: 1025px) {
- body {
-	font-size: 9px;
- }
- :global { .react-multi-carousel-track { 
-			gap: 1%;
-		}
+	.App {
+		padding: 0 1.2rem;
 	}
 }

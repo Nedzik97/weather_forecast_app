@@ -9,7 +9,6 @@
 		transition-duration: .5s;
 	}
 	display: flex;
-	width: 24rem;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
@@ -84,17 +83,23 @@
 	color: #ffffff;
 }
 
+:global {
+	.react-multi-carousel-item {
+		width: 100%;
+	}
+}
+
 :global { .react-multi-carousel-track { 
 		gap: 1%;
 	}
 }
 
 :global { .react-multiple-carousel__arrow--right { 
-		right: 0;
+		right: calc(1% + 1px);
 	}
 }
 
 :global { .react-multiple-carousel__arrow--left { 
-		left: calc(2% + 1px);
+		left: calc(1% + 1px);
 	}
 }
