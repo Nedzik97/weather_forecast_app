@@ -7,7 +7,7 @@ import { useTheme } from "../../hooks/useTheme";
 import { useTemperatureUnit } from "../../hooks/useTemperatureUnit";
 import { useSwitchTodayAnaWeekly } from "../../hooks/useSwitchTodayAndWeekly";
 import { useWeatherForecastData } from "../../hooks/useWeatherForecastData";
-import { ThemeContextProvider } from "../ThemeContext";
+import { ThemeContextProvider } from "../../theme-context/ThemeContext";
 import cx from "classnames";
 import styles from "./App.module.scss";
 

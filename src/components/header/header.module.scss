@@ -8,7 +8,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 30px 60px;
+	padding: 2rem 4.2rem;
 }
 
 .darkTheme {
@@ -18,10 +18,11 @@
 }
 
 .containerChoiceLocation h1 {
-	font-size: 40px;
+	font-size: 2.8rem;
 	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 1px;
+	text-align: center;
 	background: linear-gradient(to right, #007bff, #8a2be2, #ff0000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -43,41 +44,22 @@
 
 .switchContainer {
 	display: flex;
-	gap: 14px;
+	gap: 1rem;
 	margin-right: 2rem;
 }
 
 .degreeSwitch {
-	width: 35px;
-	height: 35px;
+	width: 2.4rem;
+	height: 2.4rem;
 	background: linear-gradient(90deg, #48057d,#e972b0,#68047c,#723ac2);
 	border-radius: 50%;
 	align-self: center;
 }
 
 .themeSwitch {
-	width: 35px;
-	height: 35px;
+	width: 2.4rem;
+	height: 2.4rem;
 	border-radius: 50%;
 	align-self: center;
 	background-color: transparent;
 }
-
-.buttonChoiceLocation {
-	padding: 15px 30px;
-	font-size: 18px;
-	line-height: 23px;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.5rem;
-	border-radius: 5px;
-	font-size: 16px;
-	font-weight: 500;
-	text-transform: capitalize;
-	letter-spacing: 0;
-	line-height: 19px;
-	color: #ffffff;
-	background: linear-gradient(90deg, #48057d,#e972b0,#68047c,#723ac2)
-}
-

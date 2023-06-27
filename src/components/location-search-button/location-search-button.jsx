@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../../theme-context/ThemeContext";
 import choiceLocationIcon from "../../images/icons/choice-location-icon.svg";
 import cx from "classnames";
 import styles from "./location-search-button.module.scss";

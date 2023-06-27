@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../../theme-context/ThemeContext";
 import { UseLocation } from "../../hooks/useLocation";
 import { LocationSearchForm } from "../location-search-form/location-search-form";
 import { LocationSearchButton } from "../location-search-button/location-search-button";

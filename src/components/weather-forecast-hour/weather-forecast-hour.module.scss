@@ -9,14 +9,14 @@
 		transition-duration: .5s;
 	}
 	display: flex;
-	min-width: 340px;
+	width: 24rem;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
 	list-style-type: none;
-	gap: 15px;
-	padding: 20px;
-	border-radius: 30px;
+	gap: 1.2rem;
+	padding: 1.5rem;
+	border-radius: 2rem;
 	background-color: #f7f8fa;
 }
 
@@ -25,8 +25,8 @@
 }
 
 .hourTemp {
-	font-size: 57px;
-  line-height: 74px;
+	font-size: 3.8rem;
+  line-height: 4rem;
 	font-weight: 600;
 	color: #353589;;
 }
@@ -36,17 +36,18 @@
 }
 
 .forecastHourIcon {
-	height: 100%;
-	width: 200px
+	max-height: 100%;
+	max-width: 100%;
+	width: 12rem
 }
 
 .forecastTime {
 	text-transform: uppercase;
-	padding: 10px 25px;
-	border-radius: 20px;
+	padding: 0.8rem 1.9rem;
+	border-radius: 1.4rem;
 	background-color: #7668e5;
 	color: #ffffff;
-	font-size: 20px;
+	font-size: 1.4rem;
 }
 
 .celsius {
@@ -56,7 +57,7 @@
 	}
 	top: -5rem;
 	left: 5rem;
-	font-size: 28px;
+	font-size: 2rem;
 	line-height: 0;
 	position: relative;
 	vertical-align: baseline;
@@ -64,21 +65,36 @@
 
 .forecastWindSpeed {
 	display: block;
-	font-size: 20px;
-	margin-bottom: 10px;
+	font-size: 1.4rem;
+	margin-bottom: 0.8rem;
 }
 
 .forecastChanceRain {
 	display: block;
-	font-size: 20px;
-	margin-bottom: 10px;
+	font-size: 1.4rem;
+	margin-bottom: 0.8rem;
 }
 
 .forecastText {
-	font-size: 25px;
+	font-size: 1.8rem;
 	font-weight: 600;
 }
 
 .darkText {
 	color: #ffffff;
+}
+
+:global { .react-multi-carousel-track { 
+		gap: 1%;
+	}
+}
+
+:global { .react-multiple-carousel__arrow--right { 
+		right: 0;
+	}
+}
+
+:global { .react-multiple-carousel__arrow--left { 
+		left: calc(2% + 1px);
+	}
 }

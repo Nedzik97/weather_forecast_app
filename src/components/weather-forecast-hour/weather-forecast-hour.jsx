@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../../theme-context/ThemeContext";
 import { getHour, getDayWeatherForecast } from "../../utils";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";

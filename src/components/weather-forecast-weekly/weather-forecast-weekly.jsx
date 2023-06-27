@@ -1,7 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useContext } from "react";
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../../theme-context/ThemeContext";
 import { responsiveCarousel, getDate } from "../../utils";
 import styles from "./weather-forecast-weekly.module.scss";
 import cx from "classnames";
