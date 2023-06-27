@@ -289,40 +289,21 @@
 		margin-top: 11rem;
 	}
 	.dateWindWrapper {
-		width: 35%;
+		width: 30%;
 		padding: 1.2rem;
 	}
-	.cityNames {
-		font-size: 3rem;
-		margin: 0 0 0.8rem 0;
-	}
-	.regionNames {
-		font-size: 1.2rem;
-		margin-bottom: 0.8rem;
-	}
-	.localTime {
-		font-size: 1.5rem;
-	}
-	
-	.lastUpdateTime {
-		font-size: 1.5rem;
-		margin-left: 2rem;
-	}
+
 	.windIndicators {
 		gap: 2rem;
-		padding: 1.4rem;
+		margin-top: 6rem;
+		padding: 2rem;
 		font-size: 1.5rem;
 	}
 	.tempWrapper {
 		width: 25%;
 		padding: 3rem;
 	}
-	.icon {
-		width: 10rem;
-		margin: 1rem auto;
-	}
-	.temp {
-		font-size: 5rem;
-		line-height: 1;
+	.currentDay {
+		font-size: 1.5rem;
 	}
 }
