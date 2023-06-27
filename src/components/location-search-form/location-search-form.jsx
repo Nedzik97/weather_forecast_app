@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../theme-context/ThemeContext";
+import { isDarkTheme, validateLanguageForm } from "../../utils";
 import cx from "classnames";
 import styles from "./location-search-form.module.scss";
 
-export const LocationSearchForm = ({ getWeatherData, setIsClickLocation }) => {
+export const LocationSearchForm = ({ getWeatherData, setFormSubmitted }) => {
   const theme = useContext(ThemeContext);
   const handleLocationForm = (e) => {
     e.preventDefault();
@@ -12,7 +13,8 @@ export const LocationSearchForm = ({ getWeatherData, setIsClickLocation }) => {
     if (inputValue) {
       getWeatherData(inputValue);
     }
-    setIsClickLocation((prev) => !prev);
+    validateLanguageForm(inputValue);
+    setFormSubmitted((prev) => !prev);
   };
 
   return (
@@ -30,7 +32,7 @@ export const LocationSearchForm = ({ getWeatherData, setIsClickLocation }) => {
       <span className={styles.bar}></span>
       <label
         className={cx(styles.locationLabel, {
-          [styles.darkLabel]: theme === "dark",
+          [styles.darkLabel]: isDarkTheme(theme),
         })}
       >
         Сity

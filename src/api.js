@@ -1,4 +1,4 @@
-const baseUrl = "http://api.weatherapi.com/v1";
+const baseUrl = "https://api.weatherapi.com/v1";
 const accountKey = `8b2fa3b1e1ca45aeb7e83803231505`;
 
 export const fetchForecastWeather = (location) => {

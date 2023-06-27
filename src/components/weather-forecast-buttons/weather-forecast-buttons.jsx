@@ -1,27 +1,28 @@
+// import { TodayAndWeekly } from "../../utils";
 import cx from "classnames";
 import styles from "./weather-forecast-buttons.module.scss";
 
 export const ForecastSwitchButtons = ({
-  todayAndWeekle,
-  setSwitchTodayAndWeekle,
+  todayAndWeekly,
+  toggleTodayAndWeekly,
 }) => {
   return (
     <div className={styles.forecastButtonWrapper}>
       <button
         className={cx(styles.buttonToday, {
-          [styles.active]: todayAndWeekle === "today",
+          [styles.active]: todayAndWeekly === "today",
         })}
         type="button"
-        onClick={() => setSwitchTodayAndWeekle("today")}
+        onClick={() => toggleTodayAndWeekly()}
       >
         Today
       </button>
       <button
         className={cx(styles.buttonWeekly, {
-          [styles.active]: todayAndWeekle === "weekly",
+          [styles.active]: todayAndWeekly === "weekly",
         })}
         type="button"
-        onClick={() => setSwitchTodayAndWeekle("weekly")}
+        onClick={() => toggleTodayAndWeekly()}
       >
         Weekly
       </button>

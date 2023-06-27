@@ -8,19 +8,20 @@ import { useTemperatureUnit } from "../../hooks/useTemperatureUnit";
 import { useSwitchTodayAnaWeekly } from "../../hooks/useSwitchTodayAndWeekly";
 import { useWeatherForecastData } from "../../hooks/useWeatherForecastData";
 import { ThemeContextProvider } from "../../theme-context/ThemeContext";
+import { isDarkTheme } from "../../utils";
 import cx from "classnames";
 import styles from "./App.module.scss";
 
 function App() {
   const { theme, toggleTheme } = useTheme();
   const { temperatureUnit, toggleTemperature } = useTemperatureUnit();
-  const { todayAndWeekle, setSwitchTodayAndWeekle } = useSwitchTodayAnaWeekly();
+  const { todayAndWeekly, toggleTodayAndWeekly } = useSwitchTodayAnaWeekly();
   const { weatherData, getWeatherData } = useWeatherForecastData();
 
   return (
     <div
       className={cx(styles.appWrapper, {
-        [styles.darkTheme]: theme === "dark",
+        [styles.darkTheme]: isDarkTheme(theme),
       })}
     >
       <div className={styles.App}>
@@ -36,10 +37,10 @@ function App() {
             temperatureUnit={temperatureUnit}
           />
           <ForecastSwitchButtons
-            todayAndWeekle={todayAndWeekle}
-            setSwitchTodayAndWeekle={setSwitchTodayAndWeekle}
+            todayAndWeekly={todayAndWeekly}
+            toggleTodayAndWeekly={toggleTodayAndWeekly}
           />
-          {todayAndWeekle === "today" ? (
+          {todayAndWeekly === "today" ? (
             <WeatherForecastForHour
               weatherData={weatherData}
               temperatureUnit={temperatureUnit}

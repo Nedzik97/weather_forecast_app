@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-export const UseLocation = () => {
-  const [isClickLocation, setIsClickLocation] = useState(false);
+export const useLocation = () => {
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   return {
-    isClickLocation,
-    setIsClickLocation,
+    formSubmitted,
+    setFormSubmitted,
   };
 };

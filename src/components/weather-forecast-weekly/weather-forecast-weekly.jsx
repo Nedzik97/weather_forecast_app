@@ -2,7 +2,12 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useContext } from "react";
 import { ThemeContext } from "../../theme-context/ThemeContext";
-import { responsiveCarousel, getDate } from "../../utils";
+import {
+  responsiveCarousel,
+  getDate,
+  isDarkTheme,
+  isTemperatureUnit,
+} from "../../utils";
 import styles from "./weather-forecast-weekly.module.scss";
 import cx from "classnames";
 
@@ -15,24 +20,24 @@ export const WeatherForecastWeekly = ({ weatherData, temperatureUnit }) => {
         return (
           <li
             className={cx(styles.forecastWeeklyItems, {
-              [styles.weeklyItemsDark]: theme === "dark",
+              [styles.weeklyItemsDark]: isDarkTheme(theme),
             })}
             key={index}
           >
             <img src={day.day.condition.icon} alt={day.day.condition.text} />
             <h2
               className={cx({
-                [styles.dateTextDark]: theme === "dark",
+                [styles.dateTextDark]: isDarkTheme(theme),
               })}
             >
               {getDate(day.date)}
             </h2>
             <span
               className={cx({
-                [styles.dayTempDark]: theme === "dark",
+                [styles.dayTempDark]: isDarkTheme(theme),
               })}
             >
-              {temperatureUnit === "celsius"
+              {isTemperatureUnit(temperatureUnit)
                 ? `${day.day.avgtemp_c}º`
                 : `${day.day.avgtemp_f}º`}
             </span>

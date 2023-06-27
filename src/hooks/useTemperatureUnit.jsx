@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { TemperatureUnit } from "../utils";
 
 export const useTemperatureUnit = () => {
-  const [temperatureUnit, setTemperatureUnit] = useState("celsius");
+  const [temperatureUnit, setTemperatureUnit] = useState(
+    TemperatureUnit.celsius
+  );
 
   const toggleTemperature = () => {
     setTemperatureUnit(
-      temperatureUnit === "celsius" ? "fahrenheit" : "celsius"
+      temperatureUnit === TemperatureUnit.celsius
+        ? TemperatureUnit.fahrenheit
+        : TemperatureUnit.celsius
     );
   };
 

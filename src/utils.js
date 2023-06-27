@@ -85,3 +85,41 @@ export const responsiveCarousel = {
     items: 1,
   },
 };
+
+export const isDarkTheme = (theme) => {
+  if (theme === "dark") {
+    return true;
+  }
+};
+
+export const isTemperatureUnit = (temperatureUnit) => {
+  if (temperatureUnit === "celsius") {
+    return true;
+  }
+};
+
+export const validateLanguageForm = (inputValue) => {
+  var regex = /^[a-zA-Z\s]+$/;
+
+  if (!regex.test(inputValue)) {
+    alert("City name must be in English");
+    return false;
+  }
+
+  return true;
+};
+
+export const Theme = {
+  light: "light",
+  dark: "dark",
+};
+
+export const TemperatureUnit = {
+  celsius: "celsius",
+  fahrenheit: "fahrenheit",
+};
+
+export const TodayAndWeekly = {
+  today: "today",
+  weekly: "weekly",
+};
