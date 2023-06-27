@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/weather_forecast_app/static/css/main.7353fc52.css",
+    "main.js": "/weather_forecast_app/static/js/main.f47b9cdc.js",
+    "static/media/bg-current-weather.jpg": "/weather_forecast_app/static/media/bg-current-weather.a8fc5674c74a1df86d4d.jpg",
+    "static/media/logo.jpg": "/weather_forecast_app/static/media/logo.60d0218625f410aef598.jpg",
+    "static/media/revicons.eot": "/weather_forecast_app/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/weather_forecast_app/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/weather_forecast_app/static/media/revicons.e8746a624ed098489406.woff",
+    "static/media/dark-theme.svg": "/weather_forecast_app/static/media/dark-theme.dd7954b37692f2941098fe8ce1a9af0c.svg",
+    "index.html": "/weather_forecast_app/index.html",
+    "static/media/wind-direction.svg": "/weather_forecast_app/static/media/wind-direction.8470b4812571bc78fd2c0aaee997699a.svg",
+    "static/media/wind-speed.svg": "/weather_forecast_app/static/media/wind-speed.8e94487e00843a9ca1af2087b4627010.svg",
+    "static/media/light-theme.svg": "/weather_forecast_app/static/media/light-theme.330b0b532a8169cd3971cef31f408d8f.svg",
+    "static/media/celsius.svg": "/weather_forecast_app/static/media/celsius.8c98781ce0f1223539ca1a9e6f6073ec.svg",
+    "static/media/choice-location-icon.svg": "/weather_forecast_app/static/media/choice-location-icon.9841d347edf8b7196f6f3b933058c7fb.svg",
+    "static/media/fahrenheit.svg": "/weather_forecast_app/static/media/fahrenheit.649b18137baad9ff3fcf5e43d45e38f0.svg",
+    "main.7353fc52.css.map": "/weather_forecast_app/static/css/main.7353fc52.css.map",
+    "main.f47b9cdc.js.map": "/weather_forecast_app/static/js/main.f47b9cdc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7353fc52.css",
+    "static/js/main.f47b9cdc.js"
+  ]
+}
