@@ -1,8 +1,8 @@
 import { getDate, getTime } from "../../utils";
 import windDir from "../../images/icons/wind-direction.svg";
 import windSpeed from "../../images/icons/wind-speed.svg";
-import { isTemperatureUnit } from "../../utils";
-import styles from "./Current-weather.module.scss";
+import { isCelsiusTemperatureUnit } from "../../utils";
+import styles from "./current-weather.module.scss";
 
 export const CurrentWeather = ({ weatherData, temperatureUnit }) => {
   if (!weatherData) {
@@ -57,10 +57,14 @@ export const CurrentWeather = ({ weatherData, temperatureUnit }) => {
           alt="icon weather"
         ></img>
         <p className={styles.temp}>
-          {isTemperatureUnit(temperatureUnit)
+          {isCelsiusTemperatureUnit(temperatureUnit)
             ? weatherData.currentWeather.tempC
             : weatherData.currentWeather.tempF}
-          {isTemperatureUnit(temperatureUnit) ? <sub>ºC</sub> : <sub>ºF</sub>}
+          {isCelsiusTemperatureUnit(temperatureUnit) ? (
+            <sub>ºC</sub>
+          ) : (
+            <sub>ºF</sub>
+          )}
         </p>
         <span className={styles.text}>{weatherData.currentWeather.text}</span>
         <span

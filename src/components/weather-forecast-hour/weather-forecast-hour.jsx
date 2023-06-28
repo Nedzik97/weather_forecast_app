@@ -1,15 +1,15 @@
+import cx from "classnames";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import { useContext } from "react";
 import { ThemeContext } from "../../theme-context/ThemeContext";
 import {
   getHour,
   getDayWeatherForecast,
   isDarkTheme,
-  isTemperatureUnit,
+  isCelsiusTemperatureUnit,
+  responsiveCarousel,
 } from "../../utils";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { responsiveCarousel } from "../../utils";
-import cx from "classnames";
 import styles from "./weather-forecast-hour.module.scss";
 
 export const WeatherForecastForHour = ({ weatherData, temperatureUnit }) => {
@@ -38,7 +38,7 @@ export const WeatherForecastForHour = ({ weatherData, temperatureUnit }) => {
                 [styles.hourTempDark]: isDarkTheme(theme),
               })}
             >
-              {isTemperatureUnit(temperatureUnit)
+              {isCelsiusTemperatureUnit(temperatureUnit)
                 ? `${hour.temp_c}º`
                 : `${hour.temp_f}º`}
             </span>

@@ -1,3 +1,4 @@
+import cx from "classnames";
 import { useContext } from "react";
 import { ThemeContext } from "../../theme-context/ThemeContext";
 import { useLocation } from "../../hooks/useLocation";
@@ -8,9 +9,37 @@ import celsius from "../../images/icons/celsius.svg";
 import fahrenheit from "../../images/icons/fahrenheit.svg";
 import lightIcon from "../../images/icons/light-theme.svg";
 import darkIcon from "../../images/icons/dark-theme.svg";
-import { isDarkTheme, isTemperatureUnit } from "../../utils";
-import cx from "classnames";
+import { isDarkTheme, isCelsiusTemperatureUnit } from "../../utils";
 import styles from "./header.module.scss";
+
+const TemperatureUnit = ({ toggleTemperature, temperatureUnit }) => {
+  return (
+    <button
+      onClick={toggleTemperature}
+      className={styles.degreeSwitch}
+      type="button"
+    >
+      {isCelsiusTemperatureUnit(temperatureUnit) ? (
+        <img src={fahrenheit} alt="fahrenheit" />
+      ) : (
+        <img src={celsius} alt="celsius" />
+      )}
+    </button>
+  );
+};
+
+const Theme = ({ toggleTheme }) => {
+  const theme = useContext(ThemeContext);
+  return (
+    <button onClick={toggleTheme} className={styles.themeSwitch} type="burron">
+      {isDarkTheme(theme) ? (
+        <img src={lightIcon} alt="light icon" />
+      ) : (
+        <img src={darkIcon} alt="dark icon" />
+      )}
+    </button>
+  );
+};
 
 export const Header = ({
   getWeatherData,
@@ -20,38 +49,6 @@ export const Header = ({
 }) => {
   const theme = useContext(ThemeContext);
   const { formSubmitted, setFormSubmitted } = useLocation();
-
-  const TemperatureUnit = ({ toggleTemperature }) => {
-    return (
-      <button
-        onClick={() => toggleTemperature()}
-        className={styles.degreeSwitch}
-        type="button"
-      >
-        {isTemperatureUnit(temperatureUnit) ? (
-          <img src={celsius} alt="celsius" />
-        ) : (
-          <img src={fahrenheit} alt="fahrenheit" />
-        )}
-      </button>
-    );
-  };
-
-  const Theme = ({ toggleTheme }) => {
-    return (
-      <button
-        onClick={() => toggleTheme()}
-        className={styles.themeSwitch}
-        type="burron"
-      >
-        {isDarkTheme(theme) ? (
-          <img src={lightIcon} alt="light icon" />
-        ) : (
-          <img src={darkIcon} alt="dark icon" />
-        )}
-      </button>
-    );
-  };
 
   return (
     <div
@@ -71,7 +68,10 @@ export const Header = ({
       <h1>Weather forecast</h1>
       <div className={styles.buttonContainer}>
         <div className={styles.switchContainer}>
-          <TemperatureUnit toggleTemperature={toggleTemperature} />
+          <TemperatureUnit
+            toggleTemperature={toggleTemperature}
+            temperatureUnit={temperatureUnit}
+          />
           <Theme toggleTheme={toggleTheme} />
         </div>
         {formSubmitted ? (

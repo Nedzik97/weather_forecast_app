@@ -86,18 +86,6 @@ export const responsiveCarousel = {
   },
 };
 
-export const isDarkTheme = (theme) => {
-  if (theme === "dark") {
-    return true;
-  }
-};
-
-export const isTemperatureUnit = (temperatureUnit) => {
-  if (temperatureUnit === "celsius") {
-    return true;
-  }
-};
-
 export const validateLanguageForm = (inputValue) => {
   var regex = /^[a-zA-Z\s]+$/;
 
@@ -109,17 +97,33 @@ export const validateLanguageForm = (inputValue) => {
   return true;
 };
 
-export const Theme = {
+export const THEME = {
   light: "light",
   dark: "dark",
 };
 
-export const TemperatureUnit = {
+export const TEMPERATURE_UNIT = {
   celsius: "celsius",
   fahrenheit: "fahrenheit",
 };
 
-export const TodayAndWeekly = {
+export const TIME_PERIOD = {
   today: "today",
   weekly: "weekly",
+};
+
+export const isDarkTheme = (theme) => {
+  if (theme === THEME.dark) {
+    return true;
+  }
+};
+
+export const isCelsiusTemperatureUnit = (temperatureUnit) => {
+  if (temperatureUnit === TEMPERATURE_UNIT.celsius) {
+    return true;
+  }
+};
+
+export const isTimePeriod = (button, activeButton) => {
+  return button === activeButton;
 };

@@ -1,21 +1,21 @@
+import cx from "classnames";
 import { Header } from "../header/header";
-import { CurrentWeather } from "../current-weather/Current-weather";
+import { CurrentWeather } from "../current-weather/current-weather";
 import { WeatherForecastForHour } from "../weather-forecast-hour/weather-forecast-hour";
 import { WeatherForecastWeekly } from "../weather-forecast-weekly/weather-forecast-weekly";
-import { ForecastSwitchButtons } from "../weather-forecast-buttons/weather-forecast-buttons";
+import { TimePeriodButtons } from "../time-period-buttons/time-period-buttons";
 import { useTheme } from "../../hooks/useTheme";
 import { useTemperatureUnit } from "../../hooks/useTemperatureUnit";
-import { useSwitchTodayAnaWeekly } from "../../hooks/useSwitchTodayAndWeekly";
+import { useTimePeriod } from "../../hooks/useTimePeriod";
 import { useWeatherForecastData } from "../../hooks/useWeatherForecastData";
 import { ThemeContextProvider } from "../../theme-context/ThemeContext";
-import { isDarkTheme } from "../../utils";
-import cx from "classnames";
+import { isDarkTheme, TIME_PERIOD } from "../../utils";
 import styles from "./App.module.scss";
 
-function App() {
+const App = () => {
   const { theme, toggleTheme } = useTheme();
   const { temperatureUnit, toggleTemperature } = useTemperatureUnit();
-  const { todayAndWeekly, toggleTodayAndWeekly } = useSwitchTodayAnaWeekly();
+  const { timePeriod, toggleTimePeriod } = useTimePeriod();
   const { weatherData, getWeatherData } = useWeatherForecastData();
 
   return (
@@ -36,11 +36,11 @@ function App() {
             weatherData={weatherData}
             temperatureUnit={temperatureUnit}
           />
-          <ForecastSwitchButtons
-            todayAndWeekly={todayAndWeekly}
-            toggleTodayAndWeekly={toggleTodayAndWeekly}
+          <TimePeriodButtons
+            timePeriod={timePeriod}
+            toggleTimePeriod={toggleTimePeriod}
           />
-          {todayAndWeekly === "today" ? (
+          {timePeriod === TIME_PERIOD.today ? (
             <WeatherForecastForHour
               weatherData={weatherData}
               temperatureUnit={temperatureUnit}
@@ -55,6 +55,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

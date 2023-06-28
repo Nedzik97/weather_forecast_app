@@ -1,12 +1,12 @@
+import cx from "classnames";
 import { useContext } from "react";
 import { ThemeContext } from "../../theme-context/ThemeContext";
 import { isDarkTheme, validateLanguageForm } from "../../utils";
-import cx from "classnames";
 import styles from "./location-search-form.module.scss";
 
 export const LocationSearchForm = ({ getWeatherData, setFormSubmitted }) => {
   const theme = useContext(ThemeContext);
-  const handleLocationForm = (e) => {
+  const submitLocationForm = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const inputValue = formData.get("location");
@@ -19,7 +19,7 @@ export const LocationSearchForm = ({ getWeatherData, setFormSubmitted }) => {
 
   return (
     <form
-      onSubmit={(e) => handleLocationForm(e)}
+      onSubmit={(e) => submitLocationForm(e)}
       className={styles.locationForm}
       method="get"
     >
