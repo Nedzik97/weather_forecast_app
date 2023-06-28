@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/weather_forecast_app/static/css/main.120adea2.css",
-    "main.js": "/weather_forecast_app/static/js/main.423be31f.js",
+    "main.css": "/weather_forecast_app/static/css/main.a011aa56.css",
+    "main.js": "/weather_forecast_app/static/js/main.b94094c4.js",
     "static/media/bg-current-weather.jpg": "/weather_forecast_app/static/media/bg-current-weather.a8fc5674c74a1df86d4d.jpg",
     "static/media/logo.jpg": "/weather_forecast_app/static/media/logo.60d0218625f410aef598.jpg",
     "static/media/revicons.eot": "/weather_forecast_app/static/media/revicons.a77de540a38981833f9e.eot",
@@ -15,11 +15,11 @@
     "static/media/celsius.svg": "/weather_forecast_app/static/media/celsius.8c98781ce0f1223539ca1a9e6f6073ec.svg",
     "static/media/choice-location-icon.svg": "/weather_forecast_app/static/media/choice-location-icon.9841d347edf8b7196f6f3b933058c7fb.svg",
     "static/media/fahrenheit.svg": "/weather_forecast_app/static/media/fahrenheit.649b18137baad9ff3fcf5e43d45e38f0.svg",
-    "main.120adea2.css.map": "/weather_forecast_app/static/css/main.120adea2.css.map",
-    "main.423be31f.js.map": "/weather_forecast_app/static/js/main.423be31f.js.map"
+    "main.a011aa56.css.map": "/weather_forecast_app/static/css/main.a011aa56.css.map",
+    "main.b94094c4.js.map": "/weather_forecast_app/static/js/main.b94094c4.js.map"
   },
   "entrypoints": [
-    "static/css/main.120adea2.css",
-    "static/js/main.423be31f.js"
+    "static/css/main.a011aa56.css",
+    "static/js/main.b94094c4.js"
   ]
 }
