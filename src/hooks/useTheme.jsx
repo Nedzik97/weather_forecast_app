@@ -1,12 +1,16 @@
 import { useState } from "react";
-import { THEME } from "../utils";
+import { THEME, checkIsDarkTheme } from "../utils";
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState(THEME.today);
+  const [theme, setTheme] = useState(THEME.light);
+
+  const isDarkTheme = checkIsDarkTheme(theme);
 
   const toggleTheme = () => {
-    setTheme(theme === THEME.light ? THEME.dark : THEME.light);
+    setTheme((prevTheme) =>
+      checkIsDarkTheme(prevTheme) ? THEME.light : THEME.dark
+    );
   };
 
-  return { theme, toggleTheme };
+  return { isDarkTheme, toggleTheme };
 };

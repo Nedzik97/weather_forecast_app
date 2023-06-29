@@ -1,7 +1,6 @@
 import cx from "classnames";
 import { useContext } from "react";
 import { ThemeContext } from "../../theme-context/ThemeContext";
-import { useLocation } from "../../hooks/useLocation";
 import { LocationSearchForm } from "../location-search-form/location-search-form";
 import { LocationSearchButton } from "../location-search-button/location-search-button";
 import logo from "../../images/logo.jpg";
@@ -9,13 +8,13 @@ import celsius from "../../images/icons/celsius.svg";
 import fahrenheit from "../../images/icons/fahrenheit.svg";
 import lightIcon from "../../images/icons/light-theme.svg";
 import darkIcon from "../../images/icons/dark-theme.svg";
-import { isDarkTheme, isCelsiusTemperatureUnit } from "../../utils";
+import { isCelsiusTemperatureUnit } from "../../utils";
 import styles from "./header.module.scss";
 
-const TemperatureUnit = ({ toggleTemperature, temperatureUnit }) => {
+const TemperatureUnit = ({ toggleTemperatureUnit, temperatureUnit }) => {
   return (
     <button
-      onClick={toggleTemperature}
+      onClick={toggleTemperatureUnit}
       className={styles.degreeSwitch}
       type="button"
     >
@@ -29,10 +28,10 @@ const TemperatureUnit = ({ toggleTemperature, temperatureUnit }) => {
 };
 
 const Theme = ({ toggleTheme }) => {
-  const theme = useContext(ThemeContext);
+  const isDarkTheme = useContext(ThemeContext);
   return (
     <button onClick={toggleTheme} className={styles.themeSwitch} type="burron">
-      {isDarkTheme(theme) ? (
+      {!isDarkTheme ? (
         <img src={lightIcon} alt="light icon" />
       ) : (
         <img src={darkIcon} alt="dark icon" />
@@ -44,16 +43,17 @@ const Theme = ({ toggleTheme }) => {
 export const Header = ({
   getWeatherData,
   toggleTheme,
-  toggleTemperature,
+  toggleTemperatureUnit,
   temperatureUnit,
+  formSubmitted,
+  setFormSubmitted,
 }) => {
-  const theme = useContext(ThemeContext);
-  const { formSubmitted, setFormSubmitted } = useLocation();
+  const isDarkTheme = useContext(ThemeContext);
 
   return (
     <div
       className={cx(styles.containerChoiceLocation, {
-        [styles.darkTheme]: isDarkTheme(theme),
+        [styles.darkTheme]: isDarkTheme,
       })}
     >
       <a href="/">
@@ -69,7 +69,7 @@ export const Header = ({
       <div className={styles.buttonContainer}>
         <div className={styles.switchContainer}>
           <TemperatureUnit
-            toggleTemperature={toggleTemperature}
+            toggleTemperatureUnit={toggleTemperatureUnit}
             temperatureUnit={temperatureUnit}
           />
           <Theme toggleTheme={toggleTheme} />

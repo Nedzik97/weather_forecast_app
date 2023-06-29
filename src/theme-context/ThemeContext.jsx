@@ -2,8 +2,10 @@ import { createContext } from "react";
 
 export const ThemeContext = createContext();
 
-export const ThemeContextProvider = ({ children, theme }) => {
+export const ThemeContextProvider = ({ children, isDarkTheme }) => {
   return (
-    <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={isDarkTheme}>
+      {children}
+    </ThemeContext.Provider>
   );
 };

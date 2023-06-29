@@ -1,25 +1,25 @@
 import cx from "classnames";
-import { isTimePeriod, TIME_PERIOD } from "../../utils";
+import { TIME_PERIOD } from "../../utils";
 import styles from "./time-period-buttons.module.scss";
 
-export const TimePeriodButtons = ({ timePeriod, toggleTimePeriod }) => {
+export const TimePeriodButtons = ({ timePeriod, setTimePeriod }) => {
   return (
     <div className={styles.forecastButtonWrapper}>
       <button
         className={cx(styles.buttonToday, {
-          [styles.active]: isTimePeriod(TIME_PERIOD.today, timePeriod),
+          [styles.active]: timePeriod === TIME_PERIOD.today,
         })}
         type="button"
-        onClick={() => toggleTimePeriod(TIME_PERIOD.today)}
+        onClick={() => setTimePeriod(TIME_PERIOD.today)}
       >
         Today
       </button>
       <button
         className={cx(styles.buttonWeekly, {
-          [styles.active]: isTimePeriod(TIME_PERIOD.weekly, timePeriod),
+          [styles.active]: timePeriod === TIME_PERIOD.weekly,
         })}
         type="button"
-        onClick={() => toggleTimePeriod(TIME_PERIOD.weekly)}
+        onClick={() => setTimePeriod(TIME_PERIOD.weekly)}
       >
         Weekly
       </button>

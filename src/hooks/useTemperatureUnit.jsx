@@ -6,13 +6,13 @@ export const useTemperatureUnit = () => {
     TEMPERATURE_UNIT.celsius
   );
 
-  const toggleTemperature = () => {
-    setTemperatureUnit(
-      temperatureUnit === TEMPERATURE_UNIT.celsius
+  const toggleTemperatureUnit = () => {
+    setTemperatureUnit((prevTemp) =>
+      prevTemp === TEMPERATURE_UNIT.celsius
         ? TEMPERATURE_UNIT.fahrenheit
         : TEMPERATURE_UNIT.celsius
     );
   };
 
-  return { temperatureUnit, toggleTemperature };
+  return { temperatureUnit, toggleTemperatureUnit };
 };

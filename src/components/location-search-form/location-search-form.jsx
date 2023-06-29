@@ -1,11 +1,12 @@
 import cx from "classnames";
 import { useContext } from "react";
 import { ThemeContext } from "../../theme-context/ThemeContext";
-import { isDarkTheme, validateLanguageForm } from "../../utils";
+import { validateLanguageForm } from "../../utils";
 import styles from "./location-search-form.module.scss";
 
 export const LocationSearchForm = ({ getWeatherData, setFormSubmitted }) => {
-  const theme = useContext(ThemeContext);
+  const isDarkTheme = useContext(ThemeContext);
+
   const submitLocationForm = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -32,7 +33,7 @@ export const LocationSearchForm = ({ getWeatherData, setFormSubmitted }) => {
       <span className={styles.bar}></span>
       <label
         className={cx(styles.locationLabel, {
-          [styles.darkLabel]: isDarkTheme(theme),
+          [styles.darkLabel]: isDarkTheme,
         })}
       >
         Сity

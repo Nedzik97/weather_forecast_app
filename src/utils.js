@@ -112,18 +112,7 @@ export const TIME_PERIOD = {
   weekly: "weekly",
 };
 
-export const isDarkTheme = (theme) => {
-  if (theme === THEME.dark) {
-    return true;
-  }
-};
+export const checkIsDarkTheme = (theme) => theme === THEME.dark;
 
-export const isCelsiusTemperatureUnit = (temperatureUnit) => {
-  if (temperatureUnit === TEMPERATURE_UNIT.celsius) {
-    return true;
-  }
-};
-
-export const isTimePeriod = (button, activeButton) => {
-  return button === activeButton;
-};
+export const isCelsiusTemperatureUnit = (temperatureUnit) =>
+  temperatureUnit === TEMPERATURE_UNIT.celsius;

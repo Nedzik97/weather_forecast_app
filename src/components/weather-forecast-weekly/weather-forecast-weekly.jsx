@@ -6,13 +6,12 @@ import { ThemeContext } from "../../theme-context/ThemeContext";
 import {
   responsiveCarousel,
   getDate,
-  isDarkTheme,
   isCelsiusTemperatureUnit,
 } from "../../utils";
 import styles from "./weather-forecast-weekly.module.scss";
 
 export const WeatherForecastWeekly = ({ weatherData, temperatureUnit }) => {
-  const theme = useContext(ThemeContext);
+  const isDarkTheme = useContext(ThemeContext);
 
   return (
     <Carousel responsive={responsiveCarousel}>
@@ -20,21 +19,21 @@ export const WeatherForecastWeekly = ({ weatherData, temperatureUnit }) => {
         return (
           <li
             className={cx(styles.forecastWeeklyItems, {
-              [styles.weeklyItemsDark]: isDarkTheme(theme),
+              [styles.weeklyItemsDark]: isDarkTheme,
             })}
             key={index}
           >
             <img src={day.day.condition.icon} alt={day.day.condition.text} />
             <h2
               className={cx({
-                [styles.dateTextDark]: isDarkTheme(theme),
+                [styles.dateTextDark]: isDarkTheme,
               })}
             >
               {getDate(day.date)}
             </h2>
             <span
               className={cx({
-                [styles.dayTempDark]: isDarkTheme(theme),
+                [styles.dayTempDark]: isDarkTheme,
               })}
             >
               {isCelsiusTemperatureUnit(temperatureUnit)

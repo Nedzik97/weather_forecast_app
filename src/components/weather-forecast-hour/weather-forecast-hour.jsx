@@ -6,14 +6,14 @@ import { ThemeContext } from "../../theme-context/ThemeContext";
 import {
   getHour,
   getDayWeatherForecast,
-  isDarkTheme,
   isCelsiusTemperatureUnit,
   responsiveCarousel,
 } from "../../utils";
 import styles from "./weather-forecast-hour.module.scss";
 
 export const WeatherForecastForHour = ({ weatherData, temperatureUnit }) => {
-  const theme = useContext(ThemeContext);
+  const isDarkTheme = useContext(ThemeContext);
+
   return (
     <Carousel responsive={responsiveCarousel} swipeable={true}>
       {getDayWeatherForecast(
@@ -23,7 +23,7 @@ export const WeatherForecastForHour = ({ weatherData, temperatureUnit }) => {
         return (
           <li
             className={cx(styles.forecastForHour, {
-              [styles.darkTheme]: isDarkTheme(theme),
+              [styles.darkTheme]: isDarkTheme,
             })}
             key={index}
           >
@@ -35,7 +35,7 @@ export const WeatherForecastForHour = ({ weatherData, temperatureUnit }) => {
             <p className={styles.forecastTime}>{getHour(hour.time)}</p>
             <span
               className={cx(styles.hourTemp, {
-                [styles.hourTempDark]: isDarkTheme(theme),
+                [styles.hourTempDark]: isDarkTheme,
               })}
             >
               {isCelsiusTemperatureUnit(temperatureUnit)
@@ -45,14 +45,14 @@ export const WeatherForecastForHour = ({ weatherData, temperatureUnit }) => {
             <div>
               <span
                 className={cx(styles.forecastWindSpeed, {
-                  [styles.darkText]: isDarkTheme(theme),
+                  [styles.darkText]: isDarkTheme,
                 })}
               >
                 {`Wind speed ${hour.wind_kph}km/h`}
               </span>
               <span
                 className={cx(styles.forecastChanceRain, {
-                  [styles.darkText]: isDarkTheme(theme),
+                  [styles.darkText]: isDarkTheme,
                 })}
               >
                 {`Chance of rain: ${hour.chance_of_rain}%`}
@@ -60,7 +60,7 @@ export const WeatherForecastForHour = ({ weatherData, temperatureUnit }) => {
             </div>
             <p
               className={cx(styles.forecastText, {
-                [styles.darkText]: isDarkTheme(theme),
+                [styles.darkText]: isDarkTheme,
               })}
             >
               {hour.condition.text}

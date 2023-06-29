@@ -1,4 +1,5 @@
 import cx from "classnames";
+import { useState } from "react";
 import { Header } from "../header/header";
 import { CurrentWeather } from "../current-weather/current-weather";
 import { WeatherForecastForHour } from "../weather-forecast-hour/weather-forecast-hour";
@@ -6,31 +7,33 @@ import { WeatherForecastWeekly } from "../weather-forecast-weekly/weather-foreca
 import { TimePeriodButtons } from "../time-period-buttons/time-period-buttons";
 import { useTheme } from "../../hooks/useTheme";
 import { useTemperatureUnit } from "../../hooks/useTemperatureUnit";
-import { useTimePeriod } from "../../hooks/useTimePeriod";
 import { useWeatherForecastData } from "../../hooks/useWeatherForecastData";
 import { ThemeContextProvider } from "../../theme-context/ThemeContext";
-import { isDarkTheme, TIME_PERIOD } from "../../utils";
+import { TIME_PERIOD } from "../../utils";
 import styles from "./App.module.scss";
 
 const App = () => {
-  const { theme, toggleTheme } = useTheme();
-  const { temperatureUnit, toggleTemperature } = useTemperatureUnit();
-  const { timePeriod, toggleTimePeriod } = useTimePeriod();
+  const { isDarkTheme, toggleTheme } = useTheme();
+  const { temperatureUnit, toggleTemperatureUnit } = useTemperatureUnit();
   const { weatherData, getWeatherData } = useWeatherForecastData();
+  const [timePeriod, setTimePeriod] = useState(TIME_PERIOD.today);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   return (
     <div
       className={cx(styles.appWrapper, {
-        [styles.darkTheme]: isDarkTheme(theme),
+        [styles.darkTheme]: isDarkTheme,
       })}
     >
       <div className={styles.App}>
-        <ThemeContextProvider theme={theme}>
+        <ThemeContextProvider isDarkTheme={isDarkTheme}>
           <Header
             getWeatherData={getWeatherData}
             toggleTheme={toggleTheme}
-            toggleTemperature={toggleTemperature}
+            toggleTemperatureUnit={toggleTemperatureUnit}
             temperatureUnit={temperatureUnit}
+            formSubmitted={formSubmitted}
+            setFormSubmitted={setFormSubmitted}
           />
           <CurrentWeather
             weatherData={weatherData}
@@ -38,7 +41,7 @@ const App = () => {
           />
           <TimePeriodButtons
             timePeriod={timePeriod}
-            toggleTimePeriod={toggleTimePeriod}
+            setTimePeriod={setTimePeriod}
           />
           {timePeriod === TIME_PERIOD.today ? (
             <WeatherForecastForHour
