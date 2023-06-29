@@ -1,4 +1,5 @@
 import cx from "classnames";
+import { v4 as uuidv4 } from "uuid";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useContext } from "react";
@@ -19,13 +20,13 @@ export const WeatherForecastForHour = ({ weatherData, temperatureUnit }) => {
       {getDayWeatherForecast(
         weatherData.forecastForHour,
         weatherData.currentWeather.localTime
-      ).map((hour, index) => {
+      ).map((hour) => {
         return (
           <li
             className={cx(styles.forecastForHour, {
               [styles.darkTheme]: isDarkTheme,
             })}
-            key={index}
+            key={uuidv4()}
           >
             <img
               className={styles.forecastHourIcon}

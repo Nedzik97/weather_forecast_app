@@ -1,6 +1,8 @@
 import { fetchForecastWeather } from "../api";
 import { useState, useEffect } from "react";
 
+const defaultCity = "London";
+
 export const useWeatherForecastData = () => {
   const [weatherData, setWeatherData] = useState({
     currentWeather: {},
@@ -34,7 +36,7 @@ export const useWeatherForecastData = () => {
   };
 
   useEffect(() => {
-    getWeatherData("London");
+    getWeatherData(defaultCity);
   }, []);
 
   return { weatherData, getWeatherData };

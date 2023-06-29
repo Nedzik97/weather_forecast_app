@@ -1,5 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { v4 as uuidv4 } from "uuid";
 import cx from "classnames";
 import { useContext } from "react";
 import { ThemeContext } from "../../theme-context/ThemeContext";
@@ -15,13 +16,13 @@ export const WeatherForecastWeekly = ({ weatherData, temperatureUnit }) => {
 
   return (
     <Carousel responsive={responsiveCarousel}>
-      {weatherData.forecastForWeekly.map((day, index) => {
+      {weatherData.forecastForWeekly.map((day) => {
         return (
           <li
             className={cx(styles.forecastWeeklyItems, {
               [styles.weeklyItemsDark]: isDarkTheme,
             })}
-            key={index}
+            key={uuidv4()}
           >
             <img src={day.day.condition.icon} alt={day.day.condition.text} />
             <h2

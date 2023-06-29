@@ -2,7 +2,7 @@
   "name": "weather_forecast_app",
   "version": "0.1.0",
   "private": true,
-	"homepage": "https://nedzik97.github.io/weather_forecast_app/",
+  "homepage": "https://nedzik97.github.io/weather_forecast_app/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -13,6 +13,7 @@
     "react-multi-carousel": "^2.8.4",
     "react-responsive-carousel": "^3.2.23",
     "react-scripts": "5.0.1",
+    "react-uuid": "^2.0.0",
     "sass": "^1.62.1",
     "web-vitals": "^2.1.4"
   },
@@ -21,8 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-		"deploy": "gh-pages -d build",
-		"predeploy": "npm run build"
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [

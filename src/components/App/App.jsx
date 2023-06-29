@@ -35,10 +35,12 @@ const App = () => {
             formSubmitted={formSubmitted}
             setFormSubmitted={setFormSubmitted}
           />
-          <CurrentWeather
-            weatherData={weatherData}
-            temperatureUnit={temperatureUnit}
-          />
+          {weatherData && (
+            <CurrentWeather
+              weatherData={weatherData}
+              temperatureUnit={temperatureUnit}
+            />
+          )}
           <TimePeriodButtons
             timePeriod={timePeriod}
             setTimePeriod={setTimePeriod}

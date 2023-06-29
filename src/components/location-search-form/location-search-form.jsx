@@ -20,7 +20,7 @@ export const LocationSearchForm = ({ getWeatherData, setFormSubmitted }) => {
 
   return (
     <form
-      onSubmit={(e) => submitLocationForm(e)}
+      onSubmit={submitLocationForm}
       className={styles.locationForm}
       method="get"
     >
